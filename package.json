@@ -1,0 +1,23 @@
+{
+  "name": "tailwind-jekyll",
+  "version": "1.0.0",
+  "description": "A starter kit for using Tailwind with Jekyll",
+  "main": "tailwind-config.js",
+  "dependencies": {
+    "tailwindcss": "^0.1.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-util": "^3.0.8",
+    "postcss-import": "^11.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
