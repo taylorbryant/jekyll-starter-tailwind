@@ -7,7 +7,7 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
     * Runs Autoprefixer
     * Minifies your CSS
     * Runs `jekyll serve`
-    * Runs BrowserSync (preview your site at `localhost:4000`)
+    * Runs BrowserSync for live reload (preview your site at `localhost:4000`)
 
 ## What is Tailwind?
 >"Tailwind is a utility-first CSS framework for rapidly building custom user interfaces." – [Tailwind](https://tailwindcss.com)
