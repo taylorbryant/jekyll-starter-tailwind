@@ -4,10 +4,10 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
 * A Gulp file with a default task that does the following:
 
     * Builds Tailwind
-    * Runs Autoprefixer
+    * Runs [Autoprefixer](https://github.com/postcss/autoprefixer)
     * Minifies your CSS
-    * Runs `jekyll serve`
-    * Runs BrowserSync for live reload (preview your site at `localhost:4000`)
+    * Builds Jekyll
+    * Runs [Browsersync](https://www.browsersync.io/) for live reload
 
 ## What is Tailwind?
 >"Tailwind is a utility-first CSS framework for rapidly building custom user interfaces." – [Tailwind](https://tailwindcss.com)
