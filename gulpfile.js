@@ -1,8 +1,9 @@
 const gulp = require('gulp');
-const child = require('child_process');
 const gutil = require('gulp-util');
+const child = require('child_process');
 const browserSync = require('browser-sync').create();
 const siteRoot = '_site';
+const cssFiles = 'src/style.css';
 
 gulp.task('jekyll', () => {
   const jekyll = child.spawn('jekyll', ['serve',
@@ -50,6 +51,8 @@ gulp.task('serve', () => {
       baseDir: siteRoot
     }
   });
+
+  gulp.watch(cssFiles);
 });
 
 gulp.task('default', ['css', 'jekyll', 'serve']);
