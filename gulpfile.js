@@ -6,23 +6,27 @@ const siteRoot = '_site';
 const cssFiles = 'src/style.css';
 const tailwindConfig = 'tailwind-config.js';
 
-gulp.task('jekyll', () => {
-  const jekyll = child.spawn('jekyll', ['serve',
-    '--watch',
-    '--incremental',
-    '--drafts'
-  ]);
+var jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
-  const jekyllLogger = (buffer) => {
-    buffer.toString()
-      .split(/\n/)
-      .forEach((message) => gutil.log('Jekyll: ' + message));
-  };
-
-  jekyll.stdout.on('data', jekyllLogger);
-  jekyll.stderr.on('data', jekyllLogger);
+/**
+ * Build the Jekyll Site
+ */
+gulp.task('jekyll-build', function (done) {
+    browserSync.notify('Running: $ jekyll build');
+    return child.spawn( jekyll , ['build'], {stdio: 'inherit'})
+        .on('close', done);
 });
 
+/**
+ * Rebuild Jekyll & do page reload
+ */
+gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+    browserSync.reload();
+});
+
+/**
+ * Compile styles
+ */
 gulp.task('css', function () {
   const atimport = require('postcss-import');
   const postcss = require('gulp-postcss');
@@ -40,10 +44,14 @@ gulp.task('css', function () {
       cascade: false
     }))
     .pipe(cleancss())
+    .pipe(gulp.dest('_site/assets/css/'))
+    .pipe(browserSync.reload({stream:true}))
     .pipe(gulp.dest('assets/css/'));
 });
 
-
+/**
+ * Serve site with browserSync
+ */
 gulp.task('serve', () => {
   browserSync.init({
     files: [siteRoot + '/**'],
@@ -54,6 +62,7 @@ gulp.task('serve', () => {
   });
 
   gulp.watch([cssFiles, tailwindConfig], ['css']);
+  gulp.watch(['**/*.html', '**/*.yml', '!_site/**/*'], ['jekyll-rebuild']);
 });
 
-gulp.task('default', ['css', 'jekyll', 'serve']);
+gulp.task('default', ['css', 'serve']);
