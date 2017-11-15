@@ -3,7 +3,8 @@ const gutil = require('gulp-util');
 const child = require('child_process');
 const browserSync = require('browser-sync').create();
 const siteRoot = '_site';
-const cssFiles = 'src/*';
+const cssFiles = 'src/style.css';
+const tailwindConfig = 'tailwind-config.js';
 
 gulp.task('jekyll', () => {
   const jekyll = child.spawn('jekyll', ['serve',
@@ -29,10 +30,10 @@ gulp.task('css', function () {
   const autoprefixer = require('gulp-autoprefixer');
   const cleancss = require('gulp-clean-css');
 
-  return gulp.src('src/style.css')
+  return gulp.src(cssFiles)
     .pipe(postcss([
       atimport(),
-      tailwindcss('src/tailwind-config.js')
+      tailwindcss(tailwindConfig)
     ]))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
@@ -52,7 +53,7 @@ gulp.task('serve', () => {
     }
   });
 
-  gulp.watch(cssFiles, ['css']);
+  gulp.watch([cssFiles, tailwindConfig], ['css']);
 });
 
 gulp.task('default', ['css', 'jekyll', 'serve']);
