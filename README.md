@@ -20,9 +20,10 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
 ## Requirements 
 * [Bundler](http://bundler.io/)
 * [gulp-cli](https://www.npmjs.com/package/gulp-cli)
+* [Jekyll](https://jekyllrb.com/)
 * [Node.js](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
-* [Ruby](https://www.ruby-lang.org/en/) 
+* [Ruby](https://www.ruby-lang.org/en/)
 
 ## Get started
 * `bundle install` to install Ruby gems
