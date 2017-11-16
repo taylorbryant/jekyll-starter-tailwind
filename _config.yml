@@ -8,3 +8,4 @@ exclude:
   - package-lock.json
   - Gemfile
   - Gemfile.lock
+  - src
