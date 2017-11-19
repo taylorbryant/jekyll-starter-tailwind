@@ -3,3 +3,4 @@ node_modules
 .jekyll-metadata
 .DS_Store
 assets
+Gemfile.lock
