@@ -4,7 +4,7 @@
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "tailwind-config.js",
   "dependencies": {
-    "tailwindcss": "^0.1.4"
+    "tailwindcss": "^0.2.1"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",
