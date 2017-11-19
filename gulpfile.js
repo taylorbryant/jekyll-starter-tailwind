@@ -4,7 +4,7 @@ const child = require('child_process');
 const browserSync = require('browser-sync').create();
 const siteRoot = '_site';
 const cssFiles = 'src/style.css';
-const tailwindConfig = 'tailwind-config.js';
+const tailwindConfig = 'tailwind.js';
 
 var jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
