@@ -3,25 +3,17 @@ const gutil = require('gulp-util');
 const child = require('child_process');
 const browserSync = require('browser-sync').create();
 const siteRoot = '_site';
-const cssFiles = 'src/style.css';
-const tailwindConfig = 'tailwind.js';
+const mainCSS = 'src/style.css'; /* Main stylesheet (pre-build) */
+const tailwindConfig = 'tailwind.js'; /* Tailwind config */
 
 var jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
 /**
  * Build the Jekyll Site
  */
-gulp.task('jekyll-build', function (done) {
+gulp.task('jekyll-build', function () {
     browserSync.notify('Running: $ jekyll build');
-    return child.spawn( jekyll , ['build'], {stdio: 'inherit'})
-        .on('close', done);
-});
-
-/**
- * Rebuild Jekyll & do page reload
- */
-gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
-    browserSync.reload();
+    return child.spawn( jekyll , ['build'], {stdio: 'inherit'});
 });
 
 /**
@@ -34,7 +26,7 @@ gulp.task('css', function () {
   const autoprefixer = require('gulp-autoprefixer');
   const cleancss = require('gulp-clean-css');
 
-  return gulp.src(cssFiles)
+  return gulp.src(mainCSS)
     .pipe(postcss([
       atimport(),
       tailwindcss(tailwindConfig)
@@ -44,25 +36,25 @@ gulp.task('css', function () {
       cascade: false
     }))
     .pipe(cleancss())
+    .pipe(gulp.dest('assets/css/'))
     .pipe(gulp.dest('_site/assets/css/'))
-    .pipe(browserSync.reload({stream:true}))
-    .pipe(gulp.dest('assets/css/'));
 });
 
 /**
- * Serve site with browserSync
+ * Serve site with BrowserSync
  */
-gulp.task('serve', () => {
+gulp.task('serve', ['jekyll-build'], () => {
   browserSync.init({
     files: [siteRoot + '/**'],
     port: 4000,
+    open: "local",
     server: {
       baseDir: siteRoot
     }
   });
 
-  gulp.watch([cssFiles, tailwindConfig], ['css']);
-  gulp.watch(['**/*.html', '**/*.yml', '!_site/**/*'], ['jekyll-rebuild']);
+  gulp.watch([mainCSS, tailwindConfig], ['css']);
+  gulp.watch(['**/*.html', '**/*.md', '**/*.yml', '!_site/**/*'], ['jekyll-build']);
 });
 
 gulp.task('default', ['css', 'serve']);
