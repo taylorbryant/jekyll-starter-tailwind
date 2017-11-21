@@ -2,18 +2,19 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const child = require('child_process');
 const browserSync = require('browser-sync').create();
+
 const siteRoot = '_site';
 const mainCSS = 'src/style.css'; /* Main stylesheet (pre-build) */
 const tailwindConfig = 'tailwind.js'; /* Tailwind config */
 
-var jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
+const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll'; /* Fix Windows compatibility issue */
 
 /**
- * Build the Jekyll Site
+ * Build Jekyll Site
  */
 gulp.task('jekyll-build', function () {
     browserSync.notify('Running: $ jekyll build');
-    return child.spawn( jekyll , ['build'], {stdio: 'inherit'});
+    return child.spawn(jekyll, ['build'], {stdio: 'inherit'});
 });
 
 /**
