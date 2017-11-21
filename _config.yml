@@ -9,3 +9,5 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - src
+  - tailwind.js
+  - README.md
