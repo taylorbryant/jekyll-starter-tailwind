@@ -2,7 +2,7 @@
   "name": "tailwind-jekyll",
   "version": "1.0.0",
   "description": "A starter kit for using Tailwind with Jekyll",
-  "main": "tailwind-config.js",
+  "main": "tailwind.js",
   "dependencies": {
     "tailwindcss": "^0.2.2"
   },
