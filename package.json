@@ -4,7 +4,7 @@
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "tailwind-config.js",
   "dependencies": {
-    "tailwindcss": "^0.2.1"
+    "tailwindcss": "^0.2.2"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",
@@ -18,6 +18,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Taylor Bryant",
   "license": "ISC"
 }
