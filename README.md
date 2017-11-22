@@ -29,3 +29,5 @@ A starter kit for using [Tailwind](https://tailwindcss.com) (v0.2.2) with [Jekyl
 * `bundle install` to install Ruby gems
 * `npm install` to install npm packages
 * `gulp` to run the default Gulp task
+
+Need to inline your CSS? Check out the [inline style version](https://github.com/taylorbryant/tailwind-jekyll-inline) of this starter kit.
