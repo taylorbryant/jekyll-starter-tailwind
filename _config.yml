@@ -2,12 +2,12 @@ title: Tailwind Jekyll Starter Kit
 description: A starter kit for using Tailwind with Jekyll
 
 exclude:
-  - package.json
-  - node_modules
-  - gulpfile.js
-  - package-lock.json
   - Gemfile
   - Gemfile.lock
+  - gulpfile.js
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
   - src
   - tailwind.js
-  - README.md

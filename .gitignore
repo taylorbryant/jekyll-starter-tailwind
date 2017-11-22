@@ -1,6 +1,7 @@
 _site
-node_modules
-.jekyll-metadata
 .DS_Store
+.jekyll-metadata
 assets
 Gemfile.lock
+node_modules
+package-lock.json
