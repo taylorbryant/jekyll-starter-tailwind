@@ -42,7 +42,7 @@ gulp.task('css', function () {
 });
 
 /**
- * Serve site with BrowserSync
+ * Serve site with Browsersync
  */
 gulp.task('serve', ['jekyll-build'], () => {
   browserSync.init({
