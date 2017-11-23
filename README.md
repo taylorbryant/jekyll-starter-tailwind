@@ -30,4 +30,4 @@ A starter kit for using [Tailwind](https://tailwindcss.com) (v0.2.2) with [Jekyl
 * `npm install` to install npm packages
 * `gulp` to run the default Gulp task
 
-Need your CSS in the <head>? Check out the [internal style version](https://github.com/taylorbryant/tailwind-jekyll-internal) of this starter kit.
+Need your CSS in the `<head>`? Check out the [internal style version](https://github.com/taylorbryant/tailwind-jekyll-internal) of this starter kit.
