@@ -55,7 +55,7 @@ gulp.task('serve', ['jekyll-build'], () => {
   });
 
   gulp.watch([mainCSS, tailwindConfig], ['css']);
-  gulp.watch(['**/*.html', '**/*.md', '**/*.yml', '!_site/**/*'], ['jekyll-build']);
+  gulp.watch(['**/*.html', '**/*.md', '**/*.yml', '!_site/**/*'], { interval: 500 }, ['jekyll-build']);
 });
 
 gulp.task('default', ['css', 'serve']);
