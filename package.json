@@ -11,7 +11,7 @@
     "gulp-postcss": "^7.0.0",
     "gulp-util": "^3.0.8",
     "postcss-import": "^11.0.0",
-    "tailwindcss": "^0.4.0"
+    "tailwindcss": "^0.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
