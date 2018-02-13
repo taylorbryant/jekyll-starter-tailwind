@@ -14,7 +14,7 @@ const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 /**
  * Build Jekyll Site
  */
-gulp.task("jekyll-build", ["css"], function() {
+gulp.task("jekyll-build", function() {
   browserSync.notify("Building Jekyll site...");
   return child.spawn(jekyll, ["build"], { stdio: "inherit" });
 });
@@ -32,7 +32,7 @@ class TailwindExtractor {
 /**
  * Compile CSS
  */
-gulp.task("css", function() {
+gulp.task("css", ["jekyll-build"], function() {
   const atimport = require("postcss-import");
   const postcss = require("gulp-postcss");
   const tailwindcss = require("tailwindcss");
@@ -70,7 +70,7 @@ gulp.task("css", function() {
 /**
  * Serve site with Browsersync
  */
-gulp.task("serve", ["jekyll-build"], () => {
+gulp.task("serve", ["css"], () => {
   browserSync.init({
     files: [siteRoot + "/**"],
     open: "local",
@@ -80,11 +80,18 @@ gulp.task("serve", ["jekyll-build"], () => {
     }
   });
 
-  gulp.watch([mainCSS, tailwindConfig], ["css"]);
   gulp.watch(
-    ["**/*.html", "**/*.md", "**/*.yml", "!_site/**/*, !node_modules"],
+    [
+      mainCSS,
+      tailwindConfig,
+      "**/*.html",
+      "**/*.md",
+      "**/*.yml",
+      "!_site/**/*",
+      "!node_modules"
+    ],
     { interval: 500 },
-    ["jekyll-build"]
+    ["css"]
   );
 });
 
