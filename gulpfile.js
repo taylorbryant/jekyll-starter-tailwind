@@ -1,9 +1,9 @@
+const browserSync = require("browser-sync").create();
+const child = require("child_process");
 const gulp = require("gulp");
 const gutil = require("gulp-util");
-const child = require("child_process");
-const browserSync = require("browser-sync").create();
-const siteRoot = "_site";
 const mainCSS = "src/style.css"; /* Main stylesheet (pre-build) */
+const siteRoot = "_site";
 const tailwindConfig = "tailwind.js"; /* Tailwind config */
 
 /**
@@ -16,6 +16,7 @@ const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
  */
 gulp.task("jekyll-build", function() {
   browserSync.notify("Building Jekyll site...");
+  
   return child.spawn(jekyll, ["build"], { stdio: "inherit" });
 });
 
@@ -34,11 +35,11 @@ class TailwindExtractor {
  */
 gulp.task("css", ["jekyll-build"], function() {
   const atimport = require("postcss-import");
-  const postcss = require("gulp-postcss");
-  const tailwindcss = require("tailwindcss");
-  const purgecss = require("gulp-purgecss");
   const autoprefixer = require("gulp-autoprefixer");
   const cleancss = require("gulp-clean-css");
+  const postcss = require("gulp-postcss");
+  const purgecss = require("gulp-purgecss");
+  const tailwindcss = require("tailwindcss");
 
   browserSync.notify("Compiling CSS...");
 
