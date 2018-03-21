@@ -1,5 +1,5 @@
 # Tailwind Jekyll Starter
-A starter kit for using [Tailwind](https://tailwindcss.com) (v0.4.2) with [Jekyll](https://jekyllrb.com/) that includes:
+A starter kit for using [Tailwind](https://tailwindcss.com) (v0.5.1) with [Jekyll](https://jekyllrb.com/) that includes:
 * A barebones Jekyll starter theme
 * A Gulp file with a default task that does the following:
 
