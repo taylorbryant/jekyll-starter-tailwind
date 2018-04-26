@@ -26,7 +26,7 @@ A starter kit for using [Tailwind](https://tailwindcss.com) (v0.5.2) with [Jekyl
 * [npm](https://www.npmjs.com/)
 * [Ruby](https://www.ruby-lang.org/en/)
 
-## Get started
+## Getting started
 * `bundle install` to install Ruby gems
 * `npm install` to install npm packages
 * `gulp` to run the default Gulp task
