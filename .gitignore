@@ -3,4 +3,3 @@ _site
 .jekyll-metadata
 assets
 node_modules
-package-lock.json
