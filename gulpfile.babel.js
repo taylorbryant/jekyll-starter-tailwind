@@ -1,8 +1,14 @@
-const browserSync = require("browser-sync").create();
-const child = require("child_process");
-const gulp = require("gulp");
-const gutil = require("gulp-util");
-const mainCSS = "src/style.css"; /* Main stylesheet (pre-build) */
+import browserSync from "browser-sync";
+import { spawn } from "child_process";
+import gulp from "gulp";
+import atimport from "postcss-import";
+import autoprefixer from "gulp-autoprefixer";
+import cleancss from "gulp-clean-css";
+import postcss from "gulp-postcss";
+import purgecss from "gulp-purgecss";
+import tailwindcss from "tailwindcss";
+
+const mainStylesheet = "src/style.css"; /* Main stylesheet (pre-build) */
 const siteRoot = "_site";
 const tailwindConfig = "tailwind.js"; /* Tailwind config */
 
@@ -14,11 +20,11 @@ const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 /**
  * Build Jekyll Site
  */
-gulp.task("jekyll-build", function() {
+const buildJekyll = () => {
   browserSync.notify("Building Jekyll site...");
-  
-  return child.spawn(jekyll, ["build"], { stdio: "inherit" });
-});
+
+  return spawn(jekyll, ["build"], { stdio: "inherit" });
+};
 
 /**
  * Custom PurgeCSS Extractor
@@ -33,18 +39,11 @@ class TailwindExtractor {
 /**
  * Compile CSS
  */
-gulp.task("css", ["jekyll-build"], function() {
-  const atimport = require("postcss-import");
-  const autoprefixer = require("gulp-autoprefixer");
-  const cleancss = require("gulp-clean-css");
-  const postcss = require("gulp-postcss");
-  const purgecss = require("gulp-purgecss");
-  const tailwindcss = require("tailwindcss");
-
+const compileStyles = () => {
   browserSync.notify("Compiling CSS...");
 
   return gulp
-    .src(mainCSS)
+    .src(mainStylesheet)
     .pipe(postcss([atimport(), tailwindcss(tailwindConfig)]))
     .pipe(
       purgecss({
@@ -66,12 +65,14 @@ gulp.task("css", ["jekyll-build"], function() {
     .pipe(cleancss())
     .pipe(gulp.dest("assets/css/"))
     .pipe(gulp.dest("_site/assets/css/"));
-});
+};
+
+const buildSite = gulp.series(buildJekyll, compileStyles);
 
 /**
  * Serve site with Browsersync
  */
-gulp.task("serve", ["css"], () => {
+const startServer = () => {
   browserSync.init({
     files: [siteRoot + "/**"],
     open: "local",
@@ -83,7 +84,7 @@ gulp.task("serve", ["css"], () => {
 
   gulp.watch(
     [
-      mainCSS,
+      mainStylesheet,
       tailwindConfig,
       "**/*.html",
       "**/*.md",
@@ -92,8 +93,10 @@ gulp.task("serve", ["css"], () => {
       "!node_modules"
     ],
     { interval: 500 },
-    ["css"]
+    buildSite
   );
-});
+};
 
-gulp.task("default", ["serve"]);
+const serve = gulp.series(buildSite, startServer);
+
+export default serve;
