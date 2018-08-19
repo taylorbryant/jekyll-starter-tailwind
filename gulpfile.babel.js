@@ -10,7 +10,7 @@ import tailwindcss from "tailwindcss";
 
 const mainStylesheet = "src/style.css"; /* Main stylesheet (pre-build) */
 const siteRoot = "_site";
-const tailwindConfig = "tailwind.js"; /* Tailwind config */
+const tailwindConfig = "tailwind.config.js"; /* Tailwind config */
 
 /**
  * Fix Windows compatibility issue
