@@ -1,6 +1,6 @@
 {
   "name": "tailwind-jekyll",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.js",
   "devDependencies": {
