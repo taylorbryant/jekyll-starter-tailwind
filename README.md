@@ -9,6 +9,9 @@ A starter kit for using [Tailwind](https://tailwindcss.com) (v0.6.1) with [Jekyl
     * Minifies your CSS
     * Builds Jekyll
     * Runs [Browsersync](https://www.browsersync.io/) for live reload
+    
+## Example
+I used this starter for my personal blog. See the code [here](https://github.com/taylorbryant/taylorbryant.github.io).
 
 ## What is Tailwind?
 >"Tailwind is a utility-first CSS framework for rapidly building custom user interfaces."
