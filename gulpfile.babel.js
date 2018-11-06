@@ -1,78 +1,83 @@
-import browserSync from "browser-sync";
-import { spawn } from "child_process";
-import gulp from "gulp";
+import { dest, series, src, task, watch } from "gulp";
+
 import atimport from "postcss-import";
-import autoprefixer from "gulp-autoprefixer";
-import cleancss from "gulp-clean-css";
+import autoprefixer from "autoprefixer";
+import browserSync from "browser-sync";
+import cssnano from "cssnano";
+import gulpif from "gulp-if";
 import postcss from "gulp-postcss";
 import purgecss from "gulp-purgecss";
+import sourcemaps from "gulp-sourcemaps"
+import { spawn } from "child_process";
 import tailwindcss from "tailwindcss";
+
+/**
+ * General settings
+ */
 
 const mainStylesheet = "src/style.css"; /* Main stylesheet (pre-build) */
 const siteRoot = "_site";
 const tailwindConfig = "tailwind.config.js"; /* Tailwind config */
+const cssDest = "_site/assets/css/";
+let devBuild = false;
 
 /**
- * Fix Windows compatibility issue
+ * Utilities
  */
+
+// Flag dev/production builds
+const setDevBuild = async () => { devBuild = true; }
+
+// Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 
-/**
- * Build Jekyll Site
- */
-const buildJekyll = () => {
-  browserSync.notify("Building Jekyll site...");
-
-  return spawn("bundle", ["exec", jekyll, "build"], { stdio: "inherit" });
-};
-
-/**
- * Custom PurgeCSS Extractor
- * https://github.com/FullHuman/purgecss
- */
+// Custom PurgeCSS Extractor
+// https://github.com/FullHuman/purgecss
 class TailwindExtractor {
   static extract(content) {
-    return content.match(/[A-z0-9-:\/]+/g);
+    return content.match(/[A-z0-9-:\/]+/g) || [];
   }
 }
 
 /**
- * Compile CSS
+ * Jekyll tasks
  */
-const compileStyles = () => {
-  browserSync.notify("Compiling CSS...");
 
-  return gulp
-    .src(mainStylesheet)
-    .pipe(postcss([atimport(), tailwindcss(tailwindConfig)]))
-    .pipe(
-      purgecss({
-        content: ["_site/**/*.html"],
-        extractors: [
-          {
-            extractor: TailwindExtractor,
-            extensions: ["html", "js"]
-          }
-        ]
-      })
-    )
-    .pipe(
-      autoprefixer({
-        browsers: ["last 2 versions"],
-        cascade: false
-      })
-    )
-    .pipe(cleancss())
-    .pipe(gulp.dest("assets/css/"))
-    .pipe(gulp.dest("_site/assets/css/"));
-};
+task('buildJekyll', () => {
+  browserSync.notify("Building Jekyll site...");
+  const args = ["exec", jekyll, "build"];
 
-const buildSite = gulp.series(buildJekyll, compileStyles);
+  if (devBuild) { args.push("--incremental"); }
+
+  return spawn("bundle", args, { stdio: "inherit" });
+});
 
 /**
- * Serve site with Browsersync
+ * CSS tasks
  */
-const startServer = () => {
+
+task('processCss', (done) => {
+  browserSync.notify('Compiling tailwind');
+  return src(mainStylesheet)
+    .pipe(postcss([atimport(), tailwindcss(tailwindConfig)]))
+    .pipe(gulpif(devBuild, sourcemaps.init()))
+    .pipe(gulpif(!devBuild, new purgecss({
+      content: ["_site/**/*.html"],
+      extractors: [{
+        extractor: TailwindExtractor,
+        extensions: ["html", "js"]
+      }]
+    })))
+    .pipe(gulpif(!devBuild, postcss([autoprefixer(), cssnano()])))
+    .pipe(gulpif(devBuild, sourcemaps.write('')))
+    .pipe(dest(cssDest));
+})
+
+/**
+ * Browsersync tasks
+ */
+
+task('startServer', () => {
   browserSync.init({
     files: [siteRoot + "/**"],
     open: "local",
@@ -82,7 +87,7 @@ const startServer = () => {
     }
   });
 
-  gulp.watch(
+  watch(
     [
       mainStylesheet,
       tailwindConfig,
@@ -91,12 +96,17 @@ const startServer = () => {
       "**/*.yml",
       "!_site/**/*",
       "!node_modules"
-    ],
-    { interval: 500 },
+    ], { interval: 500 },
     buildSite
   );
-};
+});
 
-const serve = gulp.series(buildSite, startServer);
+/**
+ * Exports
+ */
 
-export default serve;
+const buildSite = series('buildJekyll', 'processCss');
+
+exports.serve = series(setDevBuild, buildSite, 'startServer');
+exports.build_dev = series(setDevBuild, buildSite);
+exports.default = series(buildSite);
