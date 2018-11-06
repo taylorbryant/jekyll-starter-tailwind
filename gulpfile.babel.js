@@ -1,11 +1,11 @@
-import browserSync from "browser-sync";
-import { spawn } from "child_process";
-import gulp from "gulp";
 import atimport from "postcss-import";
 import autoprefixer from "gulp-autoprefixer";
+import browserSync from "browser-sync";
 import cleancss from "gulp-clean-css";
+import gulp from "gulp";
 import postcss from "gulp-postcss";
 import purgecss from "gulp-purgecss";
+import { spawn } from "child_process";
 import tailwindcss from "tailwindcss";
 
 const mainStylesheet = "src/style.css"; /* Main stylesheet (pre-build) */
@@ -23,7 +23,7 @@ const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 const buildJekyll = () => {
   browserSync.notify("Building Jekyll site...");
 
-  return spawn(jekyll, ["build"], { stdio: "inherit" });
+  return spawn("bundle", ["exec", jekyll, "build"], { stdio: "inherit" });
 };
 
 /**
@@ -48,12 +48,10 @@ const compileStyles = () => {
     .pipe(
       purgecss({
         content: ["_site/**/*.html"],
-        extractors: [
-          {
-            extractor: TailwindExtractor,
-            extensions: ["html", "js"]
-          }
-        ]
+        extractors: [{
+          extractor: TailwindExtractor,
+          extensions: ["html", "js"]
+        }]
       })
     )
     .pipe(
@@ -91,8 +89,7 @@ const startServer = () => {
       "**/*.yml",
       "!_site/**/*",
       "!node_modules"
-    ],
-    { interval: 500 },
+    ], { interval: 500 },
     buildSite
   );
 };
