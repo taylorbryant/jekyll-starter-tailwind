@@ -9,7 +9,7 @@ A starter kit for using [Tailwind](https://tailwindcss.com) (v0.6.1) with [Jekyl
     * Minifies your CSS
     * Builds Jekyll
     * Runs [Browsersync](https://www.browsersync.io/) for live reload
-    
+
 ## Example
 I used this starter for my personal blog. See the code [here](https://github.com/taylorbryant/taylorbryant.github.io).
 
@@ -21,7 +21,7 @@ I used this starter for my personal blog. See the code [here](https://github.com
 >"Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind GitHub Pages, which you can use to host sites right from your GitHub repositories."
 – [Jekyll](https://jekyllrb.com/)
 
-## Requirements 
+## Requirements
 * [Bundler](http://bundler.io/)
 * [gulp-cli](https://www.npmjs.com/package/gulp-cli)
 * [Jekyll](https://jekyllrb.com/)
@@ -32,7 +32,9 @@ I used this starter for my personal blog. See the code [here](https://github.com
 ## Getting started
 * `bundle install` to install Ruby gems
 * `npm install` to install npm packages
-* `gulp` to run the default Gulp task
+* `npm run start` to run the local development server using BrowserSync
+* `npm run build:dev` to compile the site with development settings
+* `npm run build` to compile the site for production
 
 Need your CSS in the `<head>`? Check out the [internal style version](https://github.com/taylorbryant/tailwind-jekyll-internal) of this starter kit.
 

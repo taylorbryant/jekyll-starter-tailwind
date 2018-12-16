@@ -1,78 +1,73 @@
+import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
 import { spawn } from "child_process";
-import gulp from "gulp";
-import atimport from "postcss-import";
-import autoprefixer from "gulp-autoprefixer";
-import cleancss from "gulp-clean-css";
+import cssnano from "cssnano";
+import { dest, series, src, task, watch } from "gulp";
+import gulpif from "gulp-if";
 import postcss from "gulp-postcss";
 import purgecss from "gulp-purgecss";
+import sourcemaps from "gulp-sourcemaps";
+import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 
-const mainStylesheet = "src/style.css"; /* Main stylesheet (pre-build) */
+const rawStylesheet = "src/style.css";
 const siteRoot = "_site";
-const tailwindConfig = "tailwind.config.js"; /* Tailwind config */
+const cssRoot = `${siteRoot}/assets/css/`;
+const tailwindConfig = "tailwind.config.js";
 
-/**
- * Fix Windows compatibility issue
- */
+const devBuild =
+  (process.env.NODE_ENV || "development").trim().toLowerCase() ===
+  "development";
+
+// Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 
-/**
- * Build Jekyll Site
- */
-const buildJekyll = () => {
-  browserSync.notify("Building Jekyll site...");
-
-  return spawn(jekyll, ["build"], { stdio: "inherit" });
-};
-
-/**
- * Custom PurgeCSS Extractor
- * https://github.com/FullHuman/purgecss
- */
+// Custom PurgeCSS Extractor
+// https://github.com/FullHuman/purgecss
 class TailwindExtractor {
   static extract(content) {
-    return content.match(/[A-z0-9-:\/]+/g);
+    return content.match(/[A-z0-9-:\/]+/g) || [];
   }
 }
 
-/**
- * Compile CSS
- */
-const compileStyles = () => {
-  browserSync.notify("Compiling CSS...");
+task("buildJekyll", () => {
+  browserSync.notify("Building Jekyll site...");
 
-  return gulp
-    .src(mainStylesheet)
+  const args = ["exec", jekyll, "build"];
+
+  if (devBuild) {
+    args.push("--incremental");
+  }
+
+  return spawn("bundle", args, { stdio: "inherit" });
+});
+
+task("processStyles", done => {
+  browserSync.notify("Compiling styles...");
+
+  return src(rawStylesheet)
     .pipe(postcss([atimport(), tailwindcss(tailwindConfig)]))
+    .pipe(gulpif(devBuild, sourcemaps.init()))
     .pipe(
-      purgecss({
-        content: ["_site/**/*.html"],
-        extractors: [
-          {
-            extractor: TailwindExtractor,
-            extensions: ["html", "js"]
-          }
-        ]
-      })
+      gulpif(
+        !devBuild,
+        new purgecss({
+          content: ["_site/**/*.html"],
+          extractors: [
+            {
+              extractor: TailwindExtractor,
+              extensions: ["html", "js"]
+            }
+          ]
+        })
+      )
     )
-    .pipe(
-      autoprefixer({
-        browsers: ["last 2 versions"],
-        cascade: false
-      })
-    )
-    .pipe(cleancss())
-    .pipe(gulp.dest("assets/css/"))
-    .pipe(gulp.dest("_site/assets/css/"));
-};
+    .pipe(gulpif(!devBuild, postcss([autoprefixer(), cssnano()])))
+    .pipe(gulpif(devBuild, sourcemaps.write("")))
+    .pipe(dest(cssRoot));
+});
 
-const buildSite = gulp.series(buildJekyll, compileStyles);
-
-/**
- * Serve site with Browsersync
- */
-const startServer = () => {
+task("startServer", () => {
   browserSync.init({
     files: [siteRoot + "/**"],
     open: "local",
@@ -82,9 +77,9 @@ const startServer = () => {
     }
   });
 
-  gulp.watch(
+  watch(
     [
-      mainStylesheet,
+      rawStylesheet,
       tailwindConfig,
       "**/*.html",
       "**/*.md",
@@ -95,8 +90,9 @@ const startServer = () => {
     { interval: 500 },
     buildSite
   );
-};
+});
 
-const serve = gulp.series(buildSite, startServer);
+const buildSite = series("buildJekyll", "processStyles");
 
-export default serve;
+exports.serve = series(buildSite, "startServer");
+exports.default = series(buildSite);
