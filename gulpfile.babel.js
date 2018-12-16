@@ -1,32 +1,23 @@
-import { dest, series, src, task, watch } from "gulp";
-
-import atimport from "postcss-import";
 import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
+import { spawn } from "child_process";
 import cssnano from "cssnano";
+import { dest, series, src, task, watch } from "gulp";
 import gulpif from "gulp-if";
 import postcss from "gulp-postcss";
 import purgecss from "gulp-purgecss";
-import sourcemaps from "gulp-sourcemaps"
-import { spawn } from "child_process";
+import sourcemaps from "gulp-sourcemaps";
+import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 
-/**
- * General settings
- */
-
-const mainStylesheet = "src/style.css"; /* Main stylesheet (pre-build) */
+const rawStylesheet = "src/style.css";
 const siteRoot = "_site";
-const tailwindConfig = "tailwind.config.js"; /* Tailwind config */
-const cssDest = "_site/assets/css/";
-let devBuild = false;
+const cssRoot = `${siteRoot}/assets/css/`;
+const tailwindConfig = "tailwind.config.js";
 
-/**
- * Utilities
- */
-
-// Flag dev/production builds
-const setDevBuild = async () => { devBuild = true; }
+const devBuild =
+  (process.env.NODE_ENV || "development").trim().toLowerCase() ===
+  "development";
 
 // Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
@@ -39,45 +30,44 @@ class TailwindExtractor {
   }
 }
 
-/**
- * Jekyll tasks
- */
-
-task('buildJekyll', () => {
+task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
+
   const args = ["exec", jekyll, "build"];
 
-  if (devBuild) { args.push("--incremental"); }
+  if (devBuild) {
+    args.push("--incremental");
+  }
 
   return spawn("bundle", args, { stdio: "inherit" });
 });
 
-/**
- * CSS tasks
- */
+task("processStyles", done => {
+  browserSync.notify("Compiling styles...");
 
-task('processCss', (done) => {
-  browserSync.notify('Compiling tailwind');
-  return src(mainStylesheet)
+  return src(rawStylesheet)
     .pipe(postcss([atimport(), tailwindcss(tailwindConfig)]))
     .pipe(gulpif(devBuild, sourcemaps.init()))
-    .pipe(gulpif(!devBuild, new purgecss({
-      content: ["_site/**/*.html"],
-      extractors: [{
-        extractor: TailwindExtractor,
-        extensions: ["html", "js"]
-      }]
-    })))
+    .pipe(
+      gulpif(
+        !devBuild,
+        new purgecss({
+          content: ["_site/**/*.html"],
+          extractors: [
+            {
+              extractor: TailwindExtractor,
+              extensions: ["html", "js"]
+            }
+          ]
+        })
+      )
+    )
     .pipe(gulpif(!devBuild, postcss([autoprefixer(), cssnano()])))
-    .pipe(gulpif(devBuild, sourcemaps.write('')))
-    .pipe(dest(cssDest));
-})
+    .pipe(gulpif(devBuild, sourcemaps.write("")))
+    .pipe(dest(cssRoot));
+});
 
-/**
- * Browsersync tasks
- */
-
-task('startServer', () => {
+task("startServer", () => {
   browserSync.init({
     files: [siteRoot + "/**"],
     open: "local",
@@ -89,24 +79,20 @@ task('startServer', () => {
 
   watch(
     [
-      mainStylesheet,
+      rawStylesheet,
       tailwindConfig,
       "**/*.html",
       "**/*.md",
       "**/*.yml",
       "!_site/**/*",
       "!node_modules"
-    ], { interval: 500 },
+    ],
+    { interval: 500 },
     buildSite
   );
 });
 
-/**
- * Exports
- */
+const buildSite = series("buildJekyll", "processStyles");
 
-const buildSite = series('buildJekyll', 'processCss');
-
-exports.serve = series(setDevBuild, buildSite, 'startServer');
-exports.build_dev = series(setDevBuild, buildSite);
+exports.serve = series(buildSite, "startServer");
 exports.default = series(buildSite);

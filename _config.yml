@@ -4,10 +4,11 @@ description: A starter kit for using Tailwind with Jekyll
 exclude:
   - Gemfile
   - Gemfile.lock
-  - gulpfile.js
+  - gulpfile.babel.js
+  - LICENSE.md
   - node_modules
   - package.json
   - package-lock.json
   - README.md
   - src
-  - tailwind.js
+  - tailwind.config.js
