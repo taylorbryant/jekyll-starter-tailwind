@@ -1,5 +1,5 @@
 _site
 .DS_Store
 .jekyll-metadata
-assets
+assets/css
 node_modules
