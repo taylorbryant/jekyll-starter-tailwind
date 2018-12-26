@@ -3,13 +3,13 @@ A starter kit for using [Tailwind](https://tailwindcss.com) (v0.7.3) with [Jekyl
 * A barebones Jekyll starter theme
 * A Gulpfile that does the following:
 
-    * Builds Tailwind
+    * Compiles Tailwind
     * Strips out unused CSS using [Purgecss](http://www.purgecss.com/)
     * Runs [Autoprefixer](https://github.com/postcss/autoprefixer)
     * Minifies your CSS
     * Generate a CSS sourcemap
-    * Builds Jekyll
-    * Runs [Browsersync](https://www.browsersync.io/) for live reload
+    * Compiles Jekyll
+    * Runs [Browsersync](https://www.browsersync.io/) for local development
 
 ## Example
 I used this starter for my personal blog. See the code [here](https://github.com/taylorbryant/taylorbryant.github.io).
