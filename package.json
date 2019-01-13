@@ -2,7 +2,7 @@
   "name": "tailwind-jekyll",
   "version": "4.0.0",
   "description": "A starter kit for using Tailwind with Jekyll",
-  "main": "gulpfile.js",
+  "main": "gulpfile.config.js",
   "devDependencies": {
     "autoprefixer": "^9.4.3",
     "babel-preset-env": "^1.7.0",
