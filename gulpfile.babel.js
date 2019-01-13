@@ -79,11 +79,12 @@ task("startServer", () => {
 
   watch(
     [
-      rawStylesheet,
-      tailwindConfig,
+      "**/*.css",
       "**/*.gif",
       "**/*.html",
       "**/*.jpg",
+      "**/*.jpeg",
+      "**/*.js",
       "**/*.md",
       "**/*.png",
       "**/*.yml",
