@@ -1,6 +1,6 @@
 {
   "name": "tailwind-jekyll",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.config.js",
   "devDependencies": {
@@ -15,12 +15,16 @@
     "gulp-purgecss": "^1.1.1",
     "gulp-sourcemaps": "^2.6.4",
     "postcss-import": "^11.1.0",
-    "tailwindcss": "^0.7.3"
+    "tailwindcss": "^0.7.4"
   },
   "scripts": {
     "build": "NODE_ENV=production gulp",
     "build:dev": "gulp",
     "start": "gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorbryant/tailwind-jekyll.git"
   },
   "author": "Taylor Bryant",
   "license": "ISC"
