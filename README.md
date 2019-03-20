@@ -42,7 +42,7 @@ I used this starter for my personal blog. See the code [here](https://github.com
 [MIT](https://github.com/taylorbryant/tailwind-jekyll/blob/master/LICENSE.md)
 
 ## How you can help
-Enjoying the project and want to help? You can:
+Enjoying Tailwind Jekyll and want to help? You can:
 * [Create an issue](https://github.com/taylorbryant/tailwind-jekyll/issues/new) with some constructive criticism
 * [Submit a pull request](https://github.com/taylorbryant/tailwind-jekyll/compare) with some improvements to the project
 * [Buy me a :coffee:](https://cash.me/$TaylorBryant)
