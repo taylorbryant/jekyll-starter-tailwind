@@ -38,6 +38,10 @@ I used this starter for my personal blog. See the code [here](https://github.com
 * `npm run build:dev` to compile the site with development settings
 * `npm run build` to compile the site for production
 
+
+## Deploy
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/taylorbryant/tailwind-jekyll)
+
 ## License
 [MIT](https://github.com/taylorbryant/tailwind-jekyll/blob/master/LICENSE.md)
 
