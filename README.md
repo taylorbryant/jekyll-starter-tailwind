@@ -42,6 +42,8 @@ I used this starter for my personal blog. See the code [here](https://github.com
 ## Deploy
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/taylorbryant/tailwind-jekyll)
 
+Note: By default, Netlify uses `jekyll build` as the build command. Make sure to change this to `npm run build`.
+
 ## License
 [MIT](https://github.com/taylorbryant/tailwind-jekyll/blob/master/LICENSE.md)
 
