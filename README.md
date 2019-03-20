@@ -10,12 +10,6 @@ A starter kit for using [Tailwind](https://tailwindcss.com) (v0.7.4) with [Jekyl
     * Generate a CSS sourcemap
     * Compiles Jekyll
     * Runs [Browsersync](https://www.browsersync.io/) for local development
-    
-## How you can help
-Enjoying the project and want to help? You can:
-* [Create an issue](https://github.com/taylorbryant/tailwind-jekyll/issues/new) with some constructive criticism
-* [Submit a pull request](https://github.com/taylorbryant/tailwind-jekyll/compare) with some improvements to the project
-* [Buy me a coffee](https://cash.me/$TaylorBryant)
 
 ## Example
 I used this starter for my personal blog. See the code [here](https://github.com/taylorbryant/taylorbryant.github.io).
@@ -46,3 +40,9 @@ I used this starter for my personal blog. See the code [here](https://github.com
 
 ## License
 [MIT](https://github.com/taylorbryant/tailwind-jekyll/blob/master/LICENSE.md)
+
+## How you can help
+Enjoying the project and want to help? You can:
+* [Create an issue](https://github.com/taylorbryant/tailwind-jekyll/issues/new) with some constructive criticism
+* [Submit a pull request](https://github.com/taylorbryant/tailwind-jekyll/compare) with some improvements to the project
+* [Buy me a :coffee:](https://cash.me/$TaylorBryant)
