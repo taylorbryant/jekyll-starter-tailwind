@@ -29,7 +29,7 @@ I used this starter for my personal blog. See the code [here](https://github.com
 * [npm](https://www.npmjs.com/)
 * [Ruby](https://www.ruby-lang.org/en/)
 
-## Getting started
+## Get started
 * `bundle install` to install Ruby gems
 * `npm ci` to install npm packages listed in `package-lock.json`
 * `npm run start` to compile the site with development settings and run BrowserSync
