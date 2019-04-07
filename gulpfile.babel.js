@@ -73,7 +73,10 @@ task("startServer", () => {
     open: "local",
     port: 4000,
     server: {
-      baseDir: siteRoot
+      baseDir: siteRoot,
+      serveStaticOptions: {
+        extensions: ["html"]
+      }
     }
   });
 
