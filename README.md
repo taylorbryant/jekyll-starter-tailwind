@@ -51,4 +51,3 @@ Note: By default, Netlify uses `jekyll build` as the build command. Make sure to
 Enjoying Tailwind Jekyll and want to help? You can:
 * [Create an issue](https://github.com/taylorbryant/tailwind-jekyll/issues/new) with some constructive criticism
 * [Submit a pull request](https://github.com/taylorbryant/tailwind-jekyll/compare) with some improvements to the project
-* [Buy me a :coffee:](https://cash.me/$TaylorBryant)
