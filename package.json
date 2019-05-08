@@ -1,5 +1,5 @@
 {
-  "name": "tailwind-jekyll",
+  "name": "@oddstronaut/tailwind-jekyll",
   "version": "4.0.4",
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.config.js",
@@ -24,8 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/taylorbryant/tailwind-jekyll.git"
+    "url": "https://github.com/oddstronaut/tailwind-jekyll.git"
   },
   "author": "Taylor Bryant",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oddstronaut/tailwind-jekyll/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
