@@ -1,6 +1,6 @@
 {
   "name": "@oddstronaut/tailwind-jekyll",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.config.js",
   "devDependencies": {
@@ -9,7 +9,7 @@
     "babel-register": "6.26.0",
     "browser-sync": "2.26.5",
     "cssnano": "4.1.10",
-    "gulp": "4.0.0",
+    "gulp": "4.0.2",
     "gulp-if": "2.0.2",
     "gulp-postcss": "7.0.1",
     "gulp-purgecss": "1.1.1",
