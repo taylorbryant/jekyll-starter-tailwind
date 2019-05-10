@@ -11,7 +11,7 @@
     "cssnano": "4.1.10",
     "gulp": "4.0.2",
     "gulp-if": "2.0.2",
-    "gulp-postcss": "7.0.1",
+    "gulp-postcss": "8.0.0",
     "gulp-purgecss": "1.1.1",
     "gulp-sourcemaps": "2.6.4",
     "postcss-import": "12.0.1",
