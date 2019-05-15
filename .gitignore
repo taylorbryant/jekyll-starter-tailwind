@@ -2,5 +2,4 @@ _site
 .DS_Store
 .jekyll-metadata
 assets/css
-Gemfile.lock
 node_modules
