@@ -1,4 +1,5 @@
 # Tailwind Jekyll Starter
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 A starter kit for using [Tailwind](https://tailwindcss.com) (v1.0.1) with [Jekyll](https://jekyllrb.com/) that includes:
 * A barebones Jekyll starter theme
 * A Gulpfile that does the following:
@@ -51,3 +52,15 @@ Note: By default, Netlify uses `jekyll build` as the build command. Make sure to
 Enjoying Tailwind Jekyll and want to help? You can:
 * [Create an issue](https://github.com/taylorbryant/tailwind-jekyll/issues/new) with some constructive criticism
 * [Submit a pull request](https://github.com/taylorbryant/tailwind-jekyll/compare) with some improvements to the project
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="http://phproberto.com"><img src="https://avatars0.githubusercontent.com/u/1119272?v=4" width="100px;" alt="Roberto Segura"/><br /><sub><b>Roberto Segura</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=phproberto" title="Code">💻</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
