@@ -31,6 +31,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "shime",
+      "name": "Hrvoje Šimić",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/703563?v=4",
+      "profile": "https://shime.sh",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
