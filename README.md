@@ -1,5 +1,5 @@
 # Tailwind Jekyll Starter
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 A starter kit for using [Tailwind](https://tailwindcss.com) (v1.0.1) with [Jekyll](https://jekyllrb.com/) that includes:
 * A barebones Jekyll starter theme
@@ -60,7 +60,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="http://phproberto.com"><img src="https://avatars0.githubusercontent.com/u/1119272?v=4" width="100px;" alt="Roberto Segura"/><br /><sub><b>Roberto Segura</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=phproberto" title="Code">💻</a></td><td align="center"><a href="https://github.com/benmp"><img src="https://avatars3.githubusercontent.com/u/9081154?v=4" width="100px;" alt="benmp"/><br /><sub><b>benmp</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=benmp" title="Code">💻</a></td></tr></table>
+<table><tr><td align="center"><a href="http://phproberto.com"><img src="https://avatars0.githubusercontent.com/u/1119272?v=4" width="100px;" alt="Roberto Segura"/><br /><sub><b>Roberto Segura</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=phproberto" title="Code">💻</a></td><td align="center"><a href="https://github.com/benmp"><img src="https://avatars3.githubusercontent.com/u/9081154?v=4" width="100px;" alt="benmp"/><br /><sub><b>benmp</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=benmp" title="Code">💻</a></td><td align="center"><a href="https://github.com/jd4no"><img src="https://avatars0.githubusercontent.com/u/15043675?v=4" width="100px;" alt="Joey Defourneaux"/><br /><sub><b>Joey Defourneaux</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=jd4no" title="Code">💻</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
