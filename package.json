@@ -1,6 +1,6 @@
 {
   "name": "@oddstronaut/tailwind-jekyll",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.config.js",
   "devDependencies": {
@@ -15,7 +15,7 @@
     "gulp-purgecss": "1.2.0",
     "gulp-sourcemaps": "2.6.5",
     "postcss-import": "12.0.1",
-    "tailwindcss": "1.0.1"
+    "tailwindcss": "1.0.2"
   },
   "scripts": {
     "build": "NODE_ENV=production gulp",
