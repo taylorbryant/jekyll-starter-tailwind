@@ -1,10 +1,10 @@
 {
   "name": "@oddstronaut/tailwind-jekyll",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.config.js",
   "devDependencies": {
-    "autoprefixer": "9.5.1",
+    "autoprefixer": "9.6.0",
     "babel-preset-env": "1.7.0",
     "babel-register": "6.26.0",
     "browser-sync": "2.26.5",
