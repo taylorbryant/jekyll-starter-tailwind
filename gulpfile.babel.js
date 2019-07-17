@@ -82,15 +82,13 @@ task("startServer", () => {
 
   watch(
     [
-      "!_site/**/*",
-      "!node_modules/*/**",
-      rawStylesheet,
-      tailwindConfig,
-      "*.html",
-      "_includes/**/*.html",
-      "_layouts/**/*.html",
+      "*/**.css",
+      "*/**.html",
+      "*/**.js",
       "**/*.md",
       "**/*.markdown",
+      "!_site/**/*",
+      "!node_modules/*/**"
     ],
     { interval: 500 },
     buildSite
