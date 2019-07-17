@@ -82,13 +82,13 @@ task("startServer", () => {
 
   watch(
     [
-      "*/**.css",
-      "*/**.html",
-      "*/**.js",
+      "**/*.css",
+      "**/*.html",
+      "**/*.js",
       "**/*.md",
       "**/*.markdown",
       "!_site/**/*",
-      "!node_modules/*/**"
+      "!node_modules/**/*"
     ],
     { interval: 500 },
     buildSite
