@@ -1,7 +1,7 @@
 # Tailwind Jekyll Starter
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
-A starter kit for using [Tailwind](https://tailwindcss.com) (v1.0.4) with [Jekyll](https://jekyllrb.com/) that includes:
+A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https://jekyllrb.com/) that includes:
 * A barebones Jekyll starter theme
 * A Gulpfile that does the following:
 
