@@ -13,9 +13,6 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
     * Compiles Jekyll
     * Runs [Browsersync](https://www.browsersync.io/) for local development
 
-## Example
-I used this starter for my personal blog. See the code [here](https://github.com/taylorbryant/taylorbryant.blog).
-
 ## What is Tailwind?
 >"Tailwind is a utility-first CSS framework for rapidly building custom user interfaces."
 –[Tailwind](https://tailwindcss.com)
