@@ -39,17 +39,17 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
 
 
 ## Deploy
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/taylorbryant/tailwind-jekyll)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/taylorbryant/jekyll-starter-tailwind)
 
 Note: By default, Netlify uses `jekyll build` as the build command. Make sure to change this to `npm run build`.
 
 ## License
-[MIT](https://github.com/taylorbryant/tailwind-jekyll/blob/master/LICENSE.md)
+[MIT](https://github.com/taylorbryant/jekyll-starter-tailwind/blob/master/LICENSE.md)
 
 ## How you can help
-Enjoying Tailwind Jekyll and want to help? You can:
-* [Create an issue](https://github.com/taylorbryant/tailwind-jekyll/issues/new) with some constructive criticism
-* [Submit a pull request](https://github.com/taylorbryant/tailwind-jekyll/compare) with some improvements to the project
+Enjoying Jekyll Starter Tailwind and want to help? You can:
+* [Create an issue](https://github.com/taylorbryant/jekyll-starter-tailwind/issues/new) with some constructive criticism
+* [Submit a pull request](https://github.com/taylorbryant/jekyll-starter-tailwind/compare) with some improvements to the project
 
 ## Contributors
 
@@ -57,7 +57,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="http://phproberto.com"><img src="https://avatars0.githubusercontent.com/u/1119272?v=4" width="100px;" alt="Roberto Segura"/><br /><sub><b>Roberto Segura</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=phproberto" title="Code">💻</a></td><td align="center"><a href="https://github.com/benmp"><img src="https://avatars3.githubusercontent.com/u/9081154?v=4" width="100px;" alt="benmp"/><br /><sub><b>benmp</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=benmp" title="Code">💻</a></td><td align="center"><a href="https://github.com/jd4no"><img src="https://avatars0.githubusercontent.com/u/15043675?v=4" width="100px;" alt="Joey Defourneaux"/><br /><sub><b>Joey Defourneaux</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=jd4no" title="Code">💻</a></td><td align="center"><a href="https://shime.sh"><img src="https://avatars3.githubusercontent.com/u/703563?v=4" width="100px;" alt="Hrvoje Šimić"/><br /><sub><b>Hrvoje Šimić</b></sub></a><br /><a href="https://github.com/Oddstronaut/tailwind-jekyll/commits?author=shime" title="Code">💻</a></td></tr></table>
+<table><tr><td align="center"><a href="http://phproberto.com"><img src="https://avatars0.githubusercontent.com/u/1119272?v=4" width="100px;" alt="Roberto Segura"/><br /><sub><b>Roberto Segura</b></sub></a><br /><a href="https://github.com/Oddstronaut/jekyll-starter-tailwind/commits?author=phproberto" title="Code">💻</a></td><td align="center"><a href="https://github.com/benmp"><img src="https://avatars3.githubusercontent.com/u/9081154?v=4" width="100px;" alt="benmp"/><br /><sub><b>benmp</b></sub></a><br /><a href="https://github.com/Oddstronaut/jekyll-starter-tailwind/commits?author=benmp" title="Code">💻</a></td><td align="center"><a href="https://github.com/jd4no"><img src="https://avatars0.githubusercontent.com/u/15043675?v=4" width="100px;" alt="Joey Defourneaux"/><br /><sub><b>Joey Defourneaux</b></sub></a><br /><a href="https://github.com/Oddstronaut/jekyll-starter-tailwind/commits?author=jd4no" title="Code">💻</a></td><td align="center"><a href="https://shime.sh"><img src="https://avatars3.githubusercontent.com/u/703563?v=4" width="100px;" alt="Hrvoje Šimić"/><br /><sub><b>Hrvoje Šimić</b></sub></a><br /><a href="https://github.com/Oddstronaut/jekyll-starter-tailwind/commits?author=shime" title="Code">💻</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
