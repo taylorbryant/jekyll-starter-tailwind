@@ -1,5 +1,5 @@
 {
-  "name": "@oddstronaut/tailwind-jekyll",
+  "name": "jekyll-starter-tailwind",
   "version": "5.0.12",
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.babel.js",
@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/oddstronaut/tailwind-jekyll.git"
+    "url": "https://github.com/taylorbryant/jekyll-starter-tailwind.git"
   },
   "author": "Taylor Bryant",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oddstronaut/tailwind-jekyll/issues"
+    "url": "https://github.com/taylorbryant/jekyll-starter-tailwind/issues"
   },
   "publishConfig": {
     "access": "public"
