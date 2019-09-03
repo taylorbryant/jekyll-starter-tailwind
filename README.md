@@ -1,5 +1,6 @@
 # Jekyll Starter Tailwind
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ftaylorbryant%2Fjekyll-starter-tailwind.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ftaylorbryant%2Fjekyll-starter-tailwind?ref=badge_shield)
 
 A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https://jekyllrb.com/) that includes:
 * A barebones Jekyll starter theme
@@ -45,6 +46,9 @@ Note: By default, Netlify uses `jekyll build` as the build command. Make sure to
 
 ## License
 [MIT](https://github.com/taylorbryant/jekyll-starter-tailwind/blob/master/LICENSE.md)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ftaylorbryant%2Fjekyll-starter-tailwind.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Ftaylorbryant%2Fjekyll-starter-tailwind?ref=badge_large)
 
 ## How you can help
 Enjoying Jekyll Starter Tailwind and want to help? You can:
