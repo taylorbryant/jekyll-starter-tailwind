@@ -10,49 +10,49 @@ import sourcemaps from "gulp-sourcemaps";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 
-const rawStylesheet = "src/style.css";
-const siteRoot = "_site";
-const cssRoot = `${siteRoot}/assets/css/`;
-const tailwindConfig = "tailwind.config.js";
+const SITE_ROOT = "./_site";
+const POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`;
+const PRE_BUILD_STYLESHEET = "./src/style.css";
+const TAILWIND_CONFIG = "./tailwind.config.js";
 
-const devBuild =
-  (process.env.NODE_ENV || "development").trim().toLowerCase() ===
-  "development";
+const DEVELOPMENT_ENVIRONMENT = "development";
+const environment = process.env.NODE_ENV || DEVELOPMENT_ENVIRONMENT;
+const isDevelopmentBuild = environment === DEVELOPMENT_ENVIRONMENT;
 
 // Fix for Windows compatibility
-const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
+const JEKYLL = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 
 // Custom PurgeCSS Extractor
 // https://github.com/FullHuman/purgecss
 class TailwindExtractor {
   static extract(content) {
-    return content.match(/[A-z0-9-:\/]+/g) || [];
+    return content.match(/[\w-/:]+(?<!:)/g) || [];
   }
 }
 
 task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
 
-  const args = ["exec", jekyll, "build"];
+  const args = ["exec", JEKYLL, "build"];
 
-  if (devBuild) {
+  if (isDevelopmentBuild) {
     args.push("--incremental");
   }
 
   return spawn("bundle", args, { stdio: "inherit" });
 });
 
-task("processStyles", done => {
+task("processStyles", () => {
   browserSync.notify("Compiling styles...");
 
-  return src(rawStylesheet)
-    .pipe(postcss([atimport(), tailwindcss(tailwindConfig)]))
-    .pipe(gulpif(devBuild, sourcemaps.init()))
+  return src(PRE_BUILD_STYLESHEET)
+    .pipe(postcss([atimport(), tailwindcss(TAILWIND_CONFIG)]))
+    .pipe(gulpif(isDevelopmentBuild, sourcemaps.init()))
     .pipe(
       gulpif(
-        !devBuild,
+        !isDevelopmentBuild,
         new purgecss({
-          content: ["_site/**/*.html"],
+          content: [`${SITE_ROOT}/**/*.html`],
           extractors: [
             {
               extractor: TailwindExtractor,
@@ -62,18 +62,18 @@ task("processStyles", done => {
         })
       )
     )
-    .pipe(gulpif(!devBuild, postcss([autoprefixer(), cssnano()])))
-    .pipe(gulpif(devBuild, sourcemaps.write("")))
-    .pipe(dest(cssRoot));
+    .pipe(gulpif(!isDevelopmentBuild, postcss([autoprefixer(), cssnano()])))
+    .pipe(gulpif(isDevelopmentBuild, sourcemaps.write("")))
+    .pipe(dest(POST_BUILD_STYLESHEET));
 });
 
 task("startServer", () => {
   browserSync.init({
-    files: [siteRoot + "/**"],
+    files: [SITE_ROOT + "/**"],
     open: "local",
     port: 4000,
     server: {
-      baseDir: siteRoot,
+      baseDir: SITE_ROOT,
       serveStaticOptions: {
         extensions: ["html"]
       }
