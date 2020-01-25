@@ -3,10 +3,8 @@ import browserSync from "browser-sync";
 import { spawn } from "child_process";
 import cssnano from "cssnano";
 import { dest, series, src, task, watch } from "gulp";
-import gulpif from "gulp-if";
 import postcss from "gulp-postcss";
-import purgecss from "gulp-purgecss";
-import sourcemaps from "gulp-sourcemaps";
+import purgecss from "@fullhuman/postcss-purgecss";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 
@@ -22,13 +20,8 @@ const isDevelopmentBuild = environment === DEVELOPMENT_ENVIRONMENT;
 // Fix for Windows compatibility
 const JEKYLL = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 
-// Custom PurgeCSS Extractor
-// https://github.com/FullHuman/purgecss
-class TailwindExtractor {
-  static extract(content) {
-    return content.match(/[\w-/:]+(?<!:)/g) || [];
-  }
-}
+// Custom PurgeCSS Extractor for Tailwind CSS
+const purgeFromTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];
 
 task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
@@ -46,24 +39,27 @@ task("processStyles", () => {
   browserSync.notify("Compiling styles...");
 
   return src(PRE_BUILD_STYLESHEET)
-    .pipe(postcss([atimport(), tailwindcss(TAILWIND_CONFIG)]))
-    .pipe(gulpif(isDevelopmentBuild, sourcemaps.init()))
     .pipe(
-      gulpif(
-        !isDevelopmentBuild,
-        new purgecss({
-          content: [`${SITE_ROOT}/**/*.html`],
-          extractors: [
-            {
-              extractor: TailwindExtractor,
-              extensions: ["html", "js"]
-            }
-          ]
-        })
-      )
+      postcss([
+        atimport(),
+        tailwindcss(TAILWIND_CONFIG),
+        ...(!isDevelopmentBuild
+          ? [
+              purgecss({
+                content: [`${SITE_ROOT}/**/*.html`],
+                extractors: [
+                  {
+                    extractor: purgeFromTailwind,
+                    extensions: ["html", "js"]
+                  }
+                ]
+              }),
+              autoprefixer(),
+              cssnano()
+            ]
+          : [])
+      ])
     )
-    .pipe(gulpif(!isDevelopmentBuild, postcss([autoprefixer(), cssnano()])))
-    .pipe(gulpif(isDevelopmentBuild, sourcemaps.write("")))
     .pipe(dest(POST_BUILD_STYLESHEET));
 });
 

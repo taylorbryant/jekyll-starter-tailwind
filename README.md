@@ -9,7 +9,6 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
     * Strips out unused CSS using [Purgecss](http://www.purgecss.com/)
     * Runs [Autoprefixer](https://github.com/postcss/autoprefixer)
     * Minifies your CSS
-    * Generate a CSS sourcemap
     * Compiles Jekyll
     * Runs [Browsersync](https://www.browsersync.io/) for local development
 
@@ -31,11 +30,11 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
 ## Get started
 * `bundle install` to install Ruby gems
 * `npm ci` to install npm packages listed in `package-lock.json`
-* `npm run start` to compile the site with development settings and run BrowserSync
+* `npm run start` or `npm run dev` to compile the site with development settings and run BrowserSync
 
 ## Build your site
 * `npm run build:dev` to compile the site with development settings
-* `npm run build` to compile the site for production
+* `npm run build:production` to compile the site for production
 
 
 ## Deploy
