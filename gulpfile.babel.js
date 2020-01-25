@@ -1,6 +1,5 @@
 import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
-import { spawn } from "child_process";
 import cssnano from "cssnano";
 import { dest, series, src, task, watch } from "gulp";
 import postcss from "gulp-postcss";
@@ -18,7 +17,12 @@ const environment = process.env.NODE_ENV || DEVELOPMENT_ENVIRONMENT;
 const isDevelopmentBuild = environment === DEVELOPMENT_ENVIRONMENT;
 
 // Fix for Windows compatibility
-const JEKYLL = process.platform === "win32" ? "jekyll.bat" : "jekyll";
+const isWindowsPlatform = process.platform === "win32";
+const jekyll = isWindowsPlatform ? "jekyll.bat" : "jekyll";
+const spawn =
+  isWindowsPlatform === "win32"
+    ? require("win-spawn")
+    : require("child_process").spawn;
 
 // Custom PurgeCSS Extractor for Tailwind CSS
 const purgeFromTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];
@@ -26,7 +30,7 @@ const purgeFromTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];
 task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
 
-  const args = ["exec", JEKYLL, "build"];
+  const args = ["exec", jekyll, "build"];
 
   if (isDevelopmentBuild) {
     args.push("--incremental");
