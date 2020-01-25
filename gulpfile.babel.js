@@ -12,16 +12,14 @@ const POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`;
 const PRE_BUILD_STYLESHEET = "./src/style.css";
 const TAILWIND_CONFIG = "./tailwind.config.js";
 
-const DEVELOPMENT_ENVIRONMENT = "development";
-const environment = process.env.NODE_ENV || DEVELOPMENT_ENVIRONMENT;
-const isDevelopmentBuild = environment === DEVELOPMENT_ENVIRONMENT;
-
 // Fix for Windows compatibility
 const isWindowsPlatform = process.platform === "win32";
 const jekyll = isWindowsPlatform ? "jekyll.bat" : "jekyll";
 const spawn = isWindowsPlatform
   ? require("win-spawn")
   : require("child_process").spawn;
+
+const isDevelopmentBuild = process.env.NODE_ENV === "development";
 
 // Custom PurgeCSS Extractor for Tailwind CSS
 const purgeFromTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];

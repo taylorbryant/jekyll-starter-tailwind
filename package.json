@@ -17,8 +17,8 @@
   },
   "scripts": {
     "build:production": "NODE_ENV=production gulp",
-    "build:dev": "gulp",
-    "dev": "gulp serve",
+    "build:dev": "NODE_ENV=development gulp",
+    "dev": "NODE_ENV=development gulp serve",
     "start": "npm run dev"
   },
   "repository": {
