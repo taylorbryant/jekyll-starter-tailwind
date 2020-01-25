@@ -19,10 +19,9 @@ const isDevelopmentBuild = environment === DEVELOPMENT_ENVIRONMENT;
 // Fix for Windows compatibility
 const isWindowsPlatform = process.platform === "win32";
 const jekyll = isWindowsPlatform ? "jekyll.bat" : "jekyll";
-const spawn =
-  isWindowsPlatform === "win32"
-    ? require("win-spawn")
-    : require("child_process").spawn;
+const spawn = isWindowsPlatform
+  ? require("win-spawn")
+  : require("child_process").spawn;
 
 // Custom PurgeCSS Extractor for Tailwind CSS
 const purgeFromTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];
