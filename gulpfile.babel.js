@@ -22,7 +22,7 @@ const spawn = isWindowsPlatform
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
 
 // Custom PurgeCSS Extractor for Tailwind CSS
-const purgeFromTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];
+const purgeForTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];
 
 task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
@@ -50,7 +50,7 @@ task("processStyles", () => {
                 content: [`${SITE_ROOT}/**/*.html`],
                 extractors: [
                   {
-                    extractor: purgeFromTailwind,
+                    extractor: purgeForTailwind,
                     extensions: ["html", "js"]
                   }
                 ]
