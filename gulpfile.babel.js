@@ -47,13 +47,9 @@ task("processStyles", () => {
         ...(!isDevelopmentBuild
           ? [
               purgecss({
-                content: [`${SITE_ROOT}/**/*.html`],
-                extractors: [
-                  {
-                    extractor: purgeForTailwind,
-                    extensions: ["html", "js"]
-                  }
-                ]
+                content: ["**/*.html"],
+                defaultExtractor: content =>
+                  content.match(/[\w-/:]+(?<!:)/g) || []
               }),
               autoprefixer(),
               cssnano()
