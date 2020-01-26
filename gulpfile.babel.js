@@ -47,7 +47,7 @@ task("processStyles", () => {
         ...(!isDevelopmentBuild
           ? [
               purgecss({
-                content: ["**/*.html"],
+                content: [`${SITE_ROOT}/**/*.html`],
                 defaultExtractor: content =>
                   content.match(/[\w-/:]+(?<!:)/g) || []
               }),
