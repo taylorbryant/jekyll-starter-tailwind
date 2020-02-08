@@ -18,6 +18,7 @@
   "scripts": {
     "build:production": "NODE_ENV=production gulp",
     "build:dev": "NODE_ENV=development gulp",
+    "build": "npm run build:production",
     "dev": "NODE_ENV=development gulp serve",
     "start": "npm run dev"
   },
