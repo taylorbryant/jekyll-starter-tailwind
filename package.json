@@ -9,6 +9,8 @@
     "babel-preset-env": "1.7.0",
     "babel-register": "6.26.0",
     "browser-sync": "2.26.7",
+    "cross-env": "7.0.2",
+    "cross-spawn": "7.0.2",
     "cssnano": "4.1.10",
     "gulp": "4.0.2",
     "gulp-postcss": "8.0.0",
@@ -16,10 +18,10 @@
     "tailwindcss": "1.2.0"
   },
   "scripts": {
-    "build:production": "NODE_ENV=production gulp",
-    "build:dev": "NODE_ENV=development gulp",
+    "build:production": "cross-env NODE_ENV=production gulp",
+    "build:dev": "cross-env NODE_ENV=development gulp",
     "build": "npm run build:production",
-    "dev": "NODE_ENV=development gulp serve",
+    "dev": "cross-env NODE_ENV=development gulp serve",
     "start": "npm run dev"
   },
   "repository": {

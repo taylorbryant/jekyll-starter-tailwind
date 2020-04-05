@@ -1,9 +1,10 @@
+import purgecss from "@fullhuman/postcss-purgecss";
 import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
+import spawn from "cross-spawn";
 import cssnano from "cssnano";
 import { dest, series, src, task, watch } from "gulp";
 import postcss from "gulp-postcss";
-import purgecss from "@fullhuman/postcss-purgecss";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 
@@ -13,16 +14,9 @@ const PRE_BUILD_STYLESHEET = "./src/style.css";
 const TAILWIND_CONFIG = "./tailwind.config.js";
 
 // Fix for Windows compatibility
-const isWindowsPlatform = process.platform === "win32";
-const jekyll = isWindowsPlatform ? "jekyll.bat" : "jekyll";
-const spawn = isWindowsPlatform
-  ? require("win-spawn")
-  : require("child_process").spawn;
+const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
-
-// Custom PurgeCSS Extractor for Tailwind CSS
-const purgeForTailwind = content => content.match(/[\w-/:]+(?<!:)/g) || [];
 
 task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
@@ -48,13 +42,13 @@ task("processStyles", () => {
           ? [
               purgecss({
                 content: [`${SITE_ROOT}/**/*.html`],
-                defaultExtractor: content =>
-                  content.match(/[\w-/:]+(?<!:)/g) || []
+                defaultExtractor: (content) =>
+                  content.match(/[\w-/:]+(?<!:)/g) || [],
               }),
               autoprefixer(),
-              cssnano()
+              cssnano(),
             ]
-          : [])
+          : []),
       ])
     )
     .pipe(dest(POST_BUILD_STYLESHEET));
@@ -68,9 +62,9 @@ task("startServer", () => {
     server: {
       baseDir: SITE_ROOT,
       serveStaticOptions: {
-        extensions: ["html"]
-      }
-    }
+        extensions: ["html"],
+      },
+    },
   });
 
   watch(
@@ -81,7 +75,7 @@ task("startServer", () => {
       "**/*.md",
       "**/*.markdown",
       "!_site/**/*",
-      "!node_modules/**/*"
+      "!node_modules/**/*",
     ],
     { interval: 500 },
     buildSite
