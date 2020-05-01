@@ -15,7 +15,7 @@
     "gulp": "4.0.2",
     "gulp-postcss": "8.0.0",
     "postcss-import": "12.0.1",
-    "tailwindcss": "1.4.0"
+    "tailwindcss": "1.4.1"
   },
   "scripts": {
     "build:production": "cross-env NODE_ENV=production gulp",
