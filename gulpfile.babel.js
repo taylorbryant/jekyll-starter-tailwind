@@ -1,4 +1,3 @@
-import purgecss from "@fullhuman/postcss-purgecss";
 import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
 import spawn from "cross-spawn";
@@ -38,17 +37,7 @@ task("processStyles", () => {
       postcss([
         atimport(),
         tailwindcss(TAILWIND_CONFIG),
-        ...(!isDevelopmentBuild
-          ? [
-              purgecss({
-                content: [`${SITE_ROOT}/**/*.html`],
-                defaultExtractor: (content) =>
-                  content.match(/[\w-/:]+(?<!:)/g) || [],
-              }),
-              autoprefixer(),
-              cssnano(),
-            ]
-          : []),
+        ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano()]),
       ])
     )
     .pipe(dest(POST_BUILD_STYLESHEET));

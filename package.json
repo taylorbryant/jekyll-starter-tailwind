@@ -4,7 +4,6 @@
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.babel.js",
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "2.1.2",
     "autoprefixer": "9.7.6",
     "babel-preset-env": "1.7.0",
     "babel-register": "6.26.0",
