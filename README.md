@@ -6,7 +6,7 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
 * A Gulpfile that does the following:
 
     * Compiles Tailwind
-    * Strips out unused CSS using [PurgeCSS](http://www.purgecss.com/)
+    * Strips out unused CSS using Tailwind's `purge` option
     * Runs [Autoprefixer](https://github.com/postcss/autoprefixer)
     * Minifies your CSS
     * Compiles Jekyll
