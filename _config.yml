@@ -12,3 +12,4 @@ exclude:
   - README.md
   - src
   - tailwind.config.js
+  - netlify.toml
