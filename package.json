@@ -9,7 +9,7 @@
     "babel-register": "6.26.0",
     "browser-sync": "2.26.7",
     "cross-env": "7.0.2",
-    "cross-spawn": "7.0.2",
+    "cross-spawn": "7.0.3",
     "cssnano": "4.1.10",
     "gulp": "4.0.2",
     "gulp-postcss": "8.0.0",
