@@ -17,6 +17,9 @@
     "postcss-import": "14.0.0",
     "tailwindcss": "2.0.2"
   },
+  "engines": {
+    "node": "12"
+  },
   "scripts": {
     "build:production": "cross-env NODE_ENV=production gulp",
     "build:dev": "cross-env NODE_ENV=development gulp",
