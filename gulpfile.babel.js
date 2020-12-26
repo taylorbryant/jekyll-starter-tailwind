@@ -4,7 +4,6 @@ import spawn from "cross-spawn";
 import cssnano from "cssnano";
 import { dest, series, src, task, watch } from "gulp";
 import postcss from "gulp-postcss";
-import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 
 const SITE_ROOT = "./_site";
@@ -35,7 +34,6 @@ task("processStyles", () => {
   return src(PRE_BUILD_STYLESHEET)
     .pipe(
       postcss([
-        atimport(),
         tailwindcss(TAILWIND_CONFIG),
         ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano()]),
       ])
