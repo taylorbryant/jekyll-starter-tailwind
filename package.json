@@ -13,7 +13,7 @@
     "cssnano": "4.1.10",
     "gulp": "4.0.2",
     "gulp-postcss": "9.0.0",
-    "postcss": "8.2.7",
+    "postcss": "8.2.8",
     "postcss-import": "14.0.0",
     "tailwindcss": "2.0.4"
   },
