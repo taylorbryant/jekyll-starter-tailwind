@@ -26,7 +26,14 @@ task("buildJekyll", () => {
     args.push("--incremental");
   }
 
-  return spawn("bundle", args, { stdio: "inherit" });
+  return spawn("bundle", args, {
+    stdio: "inherit",
+    env: {
+      ...process.env,
+      JEKYLL_ENV: isDevelopmentBuild ? "development" : "production",
+    },
+    shell: true,
+  });
 });
 
 task("processStyles", () => {
