@@ -15,7 +15,7 @@
     "gulp-postcss": "9.0.0",
     "postcss": "8.3.4",
     "postcss-import": "14.0.2",
-    "tailwindcss": "2.2.4"
+    "tailwindcss": "2.2.6"
   },
   "engines": {
     "node": "12"
