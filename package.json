@@ -4,7 +4,7 @@
   "description": "A starter kit for using Tailwind with Jekyll",
   "main": "gulpfile.babel.js",
   "devDependencies": {
-    "autoprefixer": "10.3.4",
+    "autoprefixer": "10.3.5",
     "babel-preset-env": "1.7.0",
     "babel-register": "6.26.0",
     "browser-sync": "2.27.4",
