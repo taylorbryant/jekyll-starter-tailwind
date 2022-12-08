@@ -15,7 +15,7 @@
     "gulp": "4.0.2",
     "gulp-postcss": "9.0.1",
     "postcss": "8.3.6",
-    "postcss-import": "14.0.2",
+    "postcss-import": "15.1.0",
     "tailwindcss": "2.2.15"
   },
   "scripts": {
